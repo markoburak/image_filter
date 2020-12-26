@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image filter</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/cyborg/bootstrap.min.css">
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-info mb-5">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                Online Image Filter
+            </a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 m-auto">
+                <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="upload-file">
+                    <label for="upload-file" class="custom-file-label" id="upload_label">Choose Image</label>
+                </div>
+                <canvas id="canvas" data-caman-hidpi-disabled="true"></canvas>
+            
+                <h4 class="text-center my-3">Filters</h4>
+                
+                <div class="row m-auto">
+                    <div class="col-md-3">
+                        <div class="btn-group btn-group-sm">
+                            <button disabled class="btn filter-btn btn-secondary brightness">Brightness</button>
+                            
+                        </div>
+                        
+                        <div class="range my-3">
+                            <input type="range" class="form-range slider" id="brightness_value" min="-20" max="20" onchange="brightnessSlider()" />
+                            <output class="slider" id="brightnessVal"></output>
+                        </div>
+                            
+                    </div>
+                    <div class="col-md-3">
+                        <div class="btn-group btn-group-sm">
+                            <button disabled class="btn filter-btn btn-secondary contrast">Contrast</button>
+                            
+                        </div>
+                        <div class="range my-3">
+                            <input type="range" class="form-range slider" id="contrast_value" min="-10" max="10" onchange="contrastSlider()" />
+                            <output class="slider" id="contrastVal"></output>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="btn-group btn-group-sm">
+                            <button disabled class="btn filter-btn btn-secondary vibrance">Vibrance</button>
+                            
+                        </div>
+                        
+                        <div class="range my-3">
+                            <input type="range" class="form-range slider" id="vibrance_value" min="-100" max="100" onchange="vibranceSlider()" />
+                            <output class="slider" id="vibranceVal"></output>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="btn-group btn-group-sm">
+                            <button disabled class="btn filter-btn btn-secondary saturation">Saturation</button>
+                            
+                        </div>
+                        
+                        <div class="range my-3">
+                            <input type="range" class="form-range slider" id="saturation_value" min="-50" max="50" onchange="saturationSlider()" />
+                            <output class="slider" id="saturationVal"></output>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row m-auto">
+                    <div class="col-md-3">
+                        <div class="btn-group btn-group-sm">
+                            <button disabled class="btn filter-btn btn-secondary noise">Noise</button>
+                        </div>
+                        
+                        <div class="range my-3">
+                            <input type="range" class="form-range slider" id="noise_value" value="0" min="0" max="100" onchange="noiseSlider()" />
+                            <output class="slider" id="noiseVal"></output>
+                        </div>
+                            
+                    </div>
+                    <div class="col-md-3">
+                        <div class="btn-group btn-group-sm">
+                            <button disabled class="btn filter-btn btn-secondary blur">Blur</button>
+                            
+                        </div>
+                        <div class="range my-3">
+                            <input type="range" class="form-range slider" id="blur_value" value="0" min="0" max="100" onchange="blurSlider()" />
+                            <output class="slider" id="blurVal"></output>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="btn-group btn-group-sm">
+                            <button disabled class="btn filter-btn btn-secondary sepia">Sepia</button>
+                            
+                        </div>
+                        
+                        <div class="range my-3">
+                            <input type="range" class="form-range slider" id="sepia_value" value="0" min="0" max="100" onchange="sepiaSlider()" />
+                            <output class="slider" id="sepiaVal"></output>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="btn-group btn-group-sm">
+                            <button disabled class="btn filter-btn btn-secondary sharpen">Sharpen</button>
+                            
+                        </div>
+                        
+                        <div class="range my-3">
+                            <input type="range" class="form-range slider" id="sharpen_value" value="0" min="0" max="100" onchange="sharpenSlider()" />
+                            <output class="slider" id="sharpenVal"></output>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <h4 class="text-center my-3">Presets</h4>
+
+                <div class="row mb-5">
+                    <div class="col-md-3">
+                        <button class="filter-btn btn-block presets vintage" onclick="vintage()">Vintage</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="filter-btn btn-block presets lomo" onclick="lomo()">Lomo</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="filter-btn btn-block presets clarity" onclick="clarity()">Clarity</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="filter-btn btn-block presets sinCity" onclick="sinCity()">Sin City</button>
+                    </div>                    
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-md-3">
+                        <button class="filter-btn btn-block presets crossProcess" onclick="crossProcess()">Cross Process</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="filter-btn btn-block presets jarques" onclick="jarques()">Jarques</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="filter-btn btn-block presets oldBoot" onclick="oldBoot()">Old Boot</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="filter-btn btn-block presets concentrate" onclick="concentrate()">Concentrate</button>
+                    </div>                    
+                </div>
+
+                <div class="row last_row">
+                    <div class="col-md-6">
+                        <button id="download-btn" class="btn last btn-warning btn-block">Download Image</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button id="remove-btn" class="btn last btn-danger btn-block" onclick="remove()">Remove Filters</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>    
+</body>
+<script src="./caman.full.js"></script>
+<script src="./app.js"></script>
+</html>

@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#canvas {
+  margin: auto;
+  background: #ececec;
+  width: 100%;
+}
+
+#upload_label {
+  color: black;
+}
+
+.btn-disabled {
+  color: white !important;
+}
+
+.slidecontainer {
+  width: 100%;
+  /* Width of the outside container */
+}
+
+.title1 {
+  margin-right: 80px;
+}
+
+.slider {
+  color: white;
+}
+
+.last_row {
+  margin: 80px;
+}
+
+.presets {
+  border: none;
+  border-radius: 10px;
+  background-color: #9933CC;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .presets {
+    margin-bottom: 30px;
+  }
+  .last {
+    margin-bottom: 30px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
